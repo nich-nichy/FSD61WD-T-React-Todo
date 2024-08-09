@@ -5,10 +5,11 @@ function Todo({ allTodos, setAllTodos, data, setData, filterStats, setFilterStat
     const [filterTodo, setFilterTodo] = useState([]);
     const addTodo = () => {
         if (data?.name.length > 0 && data?.description.length > 0) {
-            setAllTodos([...allTodos, { ...data, id: allTodos.length }]);
+            setAllTodos([...allTodos, { ...data, id: Date.now() }]);
         }
         setData({ ...data, name: "", description: "" });
     };
+
 
     const editTodo = (id, newStatus) => {
         setAllTodos(
@@ -21,25 +22,20 @@ function Todo({ allTodos, setAllTodos, data, setData, filterStats, setFilterStat
     const deleteTodo = (id) => {
         setAllTodos(allTodos.filter((todo) => todo.id !== id));
     };
-
     const handleSelect = (value) => {
         setFilterStats(value);
     };
 
     useEffect(() => {
-        if (filterStats?.toLowerCase()?.includes("all")) {
-            console.log(allTodos, "all");
+        if (filterStats === "All") {
             setFilterTodo(allTodos);
-        } else if (filterStats?.toLowerCase()?.includes("not completed")) {
-            const returnNotCompleted = allTodos.filter((todo) => todo.status === false);
-            console.log(returnNotCompleted, "not");
-            setFilterTodo(returnNotCompleted);
+        } else if (filterStats === "Not Completed") {
+            setFilterTodo(allTodos.filter((todo) => !todo.status));
         } else {
-            const returnCompleted = allTodos.filter((todo) => todo.status === true);
-            console.log(returnCompleted, "true");
-            setFilterTodo(returnCompleted);
+            setFilterTodo(allTodos.filter((todo) => todo.status));
         }
     }, [filterStats, allTodos]);
+
 
     return (
         <>
@@ -98,6 +94,7 @@ function Todo({ allTodos, setAllTodos, data, setData, filterStats, setFilterStat
                             name={todo.name}
                             description={todo.description}
                             status={todo.status}
+                            filterStats={filterStats}
                         />
                     ))}
                 </div>
