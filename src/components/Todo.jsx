@@ -3,14 +3,13 @@ import Card from './Card';
 
 function Todo({ allTodos, setAllTodos, data, setData, filterStats, setFilterStats }) {
     const [filterTodo, setFilterTodo] = useState([]);
+
     const addTodo = () => {
         if (data?.name.length > 0 && data?.description.length > 0) {
             setAllTodos([...allTodos, { ...data, id: Date.now() }]);
         }
         setData({ ...data, name: "", description: "" });
     };
-
-
     const editTodo = (id, newStatus) => {
         setAllTodos(
             allTodos.map((todo) =>
@@ -18,7 +17,6 @@ function Todo({ allTodos, setAllTodos, data, setData, filterStats, setFilterStat
             )
         );
     };
-
     const deleteTodo = (id) => {
         setAllTodos(allTodos.filter((todo) => todo.id !== id));
     };
@@ -27,15 +25,17 @@ function Todo({ allTodos, setAllTodos, data, setData, filterStats, setFilterStat
     };
 
     useEffect(() => {
-        if (filterStats === "All") {
+        if (filterStats.toLowerCase() === "all") {
+            setFilterStats("All")
             setFilterTodo(allTodos);
-        } else if (filterStats === "Not Completed") {
+        } else if (filterStats.toLowerCase() === "not completed") {
+            setFilterStats("Not Completed")
             setFilterTodo(allTodos.filter((todo) => !todo.status));
         } else {
+            setFilterStats("Completed")
             setFilterTodo(allTodos.filter((todo) => todo.status));
         }
     }, [filterStats, allTodos]);
-
 
     return (
         <>
