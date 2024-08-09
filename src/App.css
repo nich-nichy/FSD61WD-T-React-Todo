@@ -1,0 +1,64 @@
+input {
+    border: 2px solid #C5EEE1;
+    width: 25rem;
+    border-radius: 5px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #27AD8B;
+    box-shadow: 0 0 0 2px rgba(39, 173, 139, 0.5);
+}
+
+.add-btn {
+    border-radius: 10px !important;
+    width: 13rem;
+    background-color: #13AD89;
+}
+
+.bg-theme {
+    color: #71ad9d;
+}
+
+.dropdown-theme-green .btn-secondary {
+    background-color: #13AD89 !important;
+    border-color: #13AD89 !important;
+    border-radius: 0% !important;
+}
+
+.dropdown-theme-green .dropdown-menu {
+    background-color: #ffffff !important;
+}
+
+.dropdown-theme-red .btn-secondary {
+    background-color: #FE8083 !important;
+    border-color: #FE8083 !important;
+    border-radius: 0% !important;
+}
+
+.dropdown-theme-red .dropdown-menu {
+    background-color: #ffffff !important;
+}
+
+.card-theme {
+    background-color: #CCF5D3 !important;
+    border: none !important;
+}
+
+.green-btn {
+    border-radius: 7px !important;
+    background-color: #13AD89;
+    border: none;
+    color: white;
+    height: 2rem;
+    width: 5rem;
+}
+
+.red-btn {
+    border-radius: 7px !important;
+    background-color: #FE8083;
+    border: none;
+    color: white;
+    height: 2rem;
+    width: 5rem;
+}
